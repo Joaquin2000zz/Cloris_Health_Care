@@ -26,11 +26,10 @@ class DatasetManager:
             raise TypeError(error)
         self.jpg = jpg
         self.txt = txt
-        self.info = {}
 
     def change_folders(self, loc: list=[],
                        new_loc: list=[], extensions: list=[],
-                       n=None, verbose: float=True):
+                       n=None, verbose: float=True) -> None:
         """
         method which changes directories of given extensions recursively
         """
@@ -49,7 +48,7 @@ class DatasetManager:
 
         loc, new_loc, ext = loc[0], new_loc[0], extensions[0]
         if False in [isinstance(x, str) for x in [loc, new_loc, ext]]:
-            error = 'check the loc, new_loc, and ext. must be strings.'
+            error = 'check the loc, new_loc, and ext. must be lists of strings.'
             raise SyntaxError(error)
         loc = './' + loc if loc[0] != '.' else loc
         if not os.path.exists(path=loc):
@@ -70,6 +69,7 @@ class DatasetManager:
                 continue
             if verbose:
                 print(new, 'already exists.')
+
     def summary(self) -> dict:
         """
         makes as summary of the dataset. By computing the mean of each label,
@@ -86,6 +86,7 @@ class DatasetManager:
         files = glob(self.jpg + '*.jpg')
         if not files:
             raise EnvironmentError(self.jpg + ' has no .jpg files')
+        self.info = {}
         for file in files:
             name = re.split(r'/|\\', file)[-1]
             name = name.split('.')[0] + '.txt'
@@ -128,7 +129,37 @@ class DatasetManager:
         for key in self.info:
             self.info[key]['mean'] = self.info[key]['sigma'] / self.info[key]['n']
         return self.info
-            
+
+    def change_label(self, old: list, new: list) -> None:
+        """
+        changes the label number
+        """
+        if not isinstance(old, list) or not isinstance(new, list):
+            raise TypeError('old and new must be a list of integers')
+        n = len(old), len(new)
+        if n[0] != n[1]:
+            error = 'the old and new labels lists must have same length'
+            raise TypeError(error)
+        for x, y in zip(old, new):
+            if not isinstance(x, int):
+                error = 'one or more elements of the old list is not an integer'
+                raise TypeError(error)
+            if not isinstance(y, int):
+                error = 'one or more elements of the new list is not an integer'
+        self.txt = self.txt + '/' if self.txt[-1] != '/' else self.txt
+        names = glob(self.txt + '*.txt')
+        for name in names:
+            if re.split(r'/|\\', name)[-1] == 'classes.txt':
+                continue
+            with open(name, mode='r', encoding='utf8') as f:
+                new_text = ""
+                for line in f:
+                    line = line.split(' ')
+                    line[0] = str(new[old.index(int(line[0]))])
+                    new_text += " ".join(line)
+            with open(name, mode='w', encoding='utf8') as f:
+                f.write(new_text)
+
 if __name__ == '__main__':
     loc = ['./images/', './images/']
     new_loc = ['./train/images/', './train/annotations/']
@@ -136,4 +167,7 @@ if __name__ == '__main__':
     dataset = DatasetManager()
     dataset.change_folders(loc=loc, new_loc=new_loc,
                            extensions=extensions, verbose=False)
+    print(dataset.__dict__)
+    print(dataset.summary())
+    dataset.change_label(old=[15, 16], new=[1, 2])
     print(dataset.summary())
