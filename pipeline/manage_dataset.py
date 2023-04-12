@@ -301,7 +301,7 @@ if __name__ == '__main__':
                            extensions=extensions, verbose=False)
     print(dataset.__dict__)
     print(dataset.summary())
-    dataset.change_label(old=[15, 16], new=[1, 2])
+    dataset.change_label(old=[15, 16], new=[0, 1])
     print(dataset.summary())
     dataset.split_data(path='./apples/')
     print(dataset.train)
