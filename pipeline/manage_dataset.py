@@ -3,7 +3,9 @@
 module which contains DatasetManager class
 """
 from glob import glob
+import numpy as np
 import os
+import random
 import re
 import shutil
 
@@ -26,6 +28,7 @@ class DatasetManager:
             raise TypeError(error)
         self.jpg = jpg
         self.txt = txt
+        self.is_splitted = False
 
     def change_folders(self, loc: list=[],
                        new_loc: list=[], extensions: list=[],
@@ -62,6 +65,8 @@ class DatasetManager:
 
         for file in glob(loc):
             name = re.split(r'/|\\', file)[-1]
+            if name == 'classes.txt':
+                continue
             # copy files into the new location
             new = new_loc + name
             if not os.path.exists(new):
@@ -146,11 +151,9 @@ class DatasetManager:
                 raise TypeError(error)
             if not isinstance(y, int):
                 error = 'one or more elements of the new list is not an integer'
-        self.txt = self.txt + '/' if self.txt[-1] != '/' else self.txt
+        self.txt += '/' if self.txt[-1] != '/' else ''
         names = glob(self.txt + '*.txt')
         for name in names:
-            if re.split(r'/|\\', name)[-1] == 'classes.txt':
-                continue
             with open(name, mode='r', encoding='utf8') as f:
                 new_text = ""
                 for line in f:
@@ -160,9 +163,48 @@ class DatasetManager:
             with open(name, mode='w', encoding='utf8') as f:
                 f.write(new_text)
 
+    def split_data(self, path: str) -> tuple:
+        """
+        splits the dataset into training, validation and testing sets
+        into 80% 10% and 10%
+        """
+        self.jpg += '/' if self.jpg[-1] != '/' else ''
+        self.txt += '/' if self.txt[-1] != '/' else ''
+        names = glob(self.jpg + '*')
+        random.shuffle(names)
+        n = len(names)
+        train, val_test = names[:int(n * .8)], names[int(n * .8):]
+        n -= int(n * .8)
+        val, test = val_test[:int(n * .5)], val_test[int(n * .5):] 
+        n = len(val), len(test)
+        val, test = (test, val) if n[1] > n[0] else (val, test)
+        path = './' + path if path[0] != '.' else path
+        path += '/' if path[-1] != '/' else ''
+        for x, dataset in zip(['train', 'val', 'test'], [train, val, test]):
+            x += '/' if x[-1] != '/' else ''
+            for file in dataset:
+                images = path + 'images/' + x
+                labels = path + 'labels/' + x
+                if not os.path.exists(path=images):
+                    os.makedirs(name=images)
+                if not os.path.exists(path=labels):
+                    os.makedirs(name=labels)
+                name = re.split(r'/|\\', file)[-1].split('.')[0]
+                os.replace(self.txt + name + '.txt',
+                           labels + name + '.txt')
+                os.replace(self.jpg + name + '.jpg',
+                           labels + name + '.jpg')
+            setattr(self, x[:-1], {'images': images,
+                                   'labels': labels})
+        self.jpg = None
+        self.txt = None
+
+        print(len(train), len(val), len(test))
+        self.is_splitted = True
+
 if __name__ == '__main__':
     loc = ['./images/', './images/']
-    new_loc = ['./train/images/', './train/annotations/']
+    new_loc = ['./apples/images/', './apples/labels/']
     extensions = ['jpg', 'txt']
     dataset = DatasetManager()
     dataset.change_folders(loc=loc, new_loc=new_loc,
@@ -171,3 +213,4 @@ if __name__ == '__main__':
     print(dataset.summary())
     dataset.change_label(old=[15, 16], new=[1, 2])
     print(dataset.summary())
+    dataset.split_data()
