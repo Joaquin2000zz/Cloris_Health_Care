@@ -78,6 +78,28 @@ class DatasetManager:
             if verbose:
                 print(new, 'already exists.')
 
+    @staticmethod
+    def variance(X: list, mu: float, n: int, is_sample: bool = False):
+        """
+        computes the variance
+        @X: are the datapoints
+        @mu: is the mean (x bar in case of sample)
+        @n: datapoints quantity
+        @is_sample: flag which determines whether
+                    is the sample or population variance
+        Returns: the variance
+        """
+        if not X or not isinstance(X, list):
+            raise TypeError('X must be a list')
+        if not isinstance(n, int):
+            raise TypeError('n must be a numerical value')
+        if not isinstance(mu, int) and not isinstance(mu, float):
+            raise TypeError('mu must be a numerical value')
+        if not isinstance(is_sample, bool):
+            raise TypeError('is_sample must be a boolean')
+        sigma = sum([(x - mu) ** 2 for x in X])
+        return sigma / n if not is_sample else sigma / (n - 1)
+
     def summary(self) -> dict:
         """
         makes as summary of the dataset. By computing the mean of each label,
@@ -144,8 +166,10 @@ class DatasetManager:
             for key in self.info:
                 mu = self.info[key]['sum'] / self.info[key]['n']
                 self.info[key]['mean'] = mu
-                sigma = sum([(x - mu) ** 2 for x in self.info[key].pop('X')])
-                variance = sigma / self.info[key]['n']
+                variance = self.variance(X=self.info[key].pop('X'),
+                                         mu=mu,
+                                         n=self.info[key]['n'],
+                                         is_sample=False)
                 self.info[key]['variance'] = variance
                 # tested and is the same as x ** (1/2) and np.sqrt(x)
                 self.info[key]['stddev'] = variance ** .5
@@ -210,9 +234,10 @@ class DatasetManager:
                 x_bar = self.info[name_set][key]['sum'] / \
                     self.info[name_set][key]['n']
                 self.info[name_set][key]['mean'] = x_bar
-                sigma = sum(
-                    [(x - x_bar) ** 2 for x in self.info[name_set][key].pop('X')])
-                variance = sigma / (self.info[name_set][key]['n'] - 1)
+                variance = self.variance(X=self.info[name_set][key].pop('X'),
+                                         mu=x_bar,
+                                         n=self.info[name_set][key]['n'],
+                                         is_sample=True)
                 self.info[name_set][key]['variance'] = variance
                 # tested and is the same as x ** (1/2) and np.sqrt(x)
                 self.info[name_set][key]['stddev'] = variance ** .5
@@ -291,6 +316,7 @@ class DatasetManager:
         self.jpg = None
         self.txt = None
         self.is_splitted = True
+
 
 if __name__ == '__main__':
     loc = ['./images/', './images/']
