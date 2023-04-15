@@ -23,4 +23,5 @@ pip3 install -U tensorflow-probability
 pip3 install -U pyarrow
 pip3 uninstall keras
 pip3 install -U tensorflow keras
+sudo apt-get install -y nodejs
 npm install
