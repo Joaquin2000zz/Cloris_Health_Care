@@ -12,9 +12,9 @@ import { xywh2xyxy } from "./xtwh2xyxy";
 export function non_max_suppression(results, conf_thresh=.5, iou_thresh=.2) {
     const selected_detections = [];
 
-    for (const [i, res] of results.entries()) {
+    for (const res of results) {
 
-        if (res[4] < conf_thresh) { continue; };
+        if (res[4] < conf_thresh) continue;
 
         var box = res.slice(0, 4);
         const cls_detections = res.slice(5);
@@ -26,7 +26,7 @@ export function non_max_suppression(results, conf_thresh=.5, iou_thresh=.2) {
         let addBox = true;
 
         // checking for overlap with previously selected boxes
-        for (const [j, selected_xywh] of selected_detections.entries()) {
+        for (const selected_xywh of selected_detections) {
             let selectedBox = xywh2xyxy(selected_xywh);
 
             // computing the intersection and union of both boxes

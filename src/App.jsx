@@ -51,6 +51,7 @@ const App = () => {
         await model.executeAsync(input).then((res) => {
             res = res.arraySync()[0];
             var detections = non_max_suppression(res);
+            console.log(detections)
             const boxes = shortenedCol(detections, [0, 1, 2, 3]);
             const scores = shortenedCol(detections, [4]);
             const classes = shortenedCol(detections, [5]);
