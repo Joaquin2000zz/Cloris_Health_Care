@@ -9,7 +9,7 @@ import { xywh2xyxy } from "./xtwh2xyxy";
  * Returns:
  * @selected_detections: an array containing the selected detections
  */
-export function non_max_suppression(results, conf_thresh=.5, iou_thresh=.2) {
+export function non_max_suppression(results, conf_thresh = .5, iou_thresh = .2) {
     const selected_detections = [];
 
     for (const res of results) {
@@ -31,17 +31,17 @@ export function non_max_suppression(results, conf_thresh=.5, iou_thresh=.2) {
 
             // computing the intersection and union of both boxes
             let intersectionXmin = Math.max(object[0],
-                                            selectedBox[0]);
+                selectedBox[0]);
             let intersectionYmin = Math.max(object[1],
-                                            selectedBox[1]);
+                selectedBox[1]);
             let intersectionXmax = Math.min(object[2],
-                                            selectedBox[2]);
+                selectedBox[2]);
             let intersectionYmax = Math.min(object[3],
-                                            selectedBox[3]);
+                selectedBox[3]);
             let intersectionWidth = Math.max(0,
-                                             intersectionXmax - intersectionXmin);
+                intersectionXmax - intersectionXmin);
             let intersectionHeight = Math.max(0,
-                                              intersectionYmax - intersectionYmin);
+                intersectionYmax - intersectionYmin);
             let intersectionArea = intersectionWidth * intersectionHeight;
             let boxArea = (object[2] - object[0]) * (object[3] - object[1]);
             let selectedBoxArea = (selectedBox[2] - selectedBox[0]) * (selectedBox[3] - selectedBox[1]);
@@ -55,8 +55,7 @@ export function non_max_suppression(results, conf_thresh=.5, iou_thresh=.2) {
             }
         }
         // adding the box to the selected boxes
-        if (addBox)
-        {
+        if (addBox) {
             const row = box.concat(score, cls);
             selected_detections.push(row);
         }

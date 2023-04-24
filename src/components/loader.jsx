@@ -1,14 +1,13 @@
-import React from 'react';
 import '../style/loader.css';
+import styles from '../style';
 
 
-const Loader = (props) => {
-    return (
+const Loader = (props) =>
+    (
         <div className='wrapper' {... props}>
             <div className='spinner'></div>
-            <p>{ props.children }</p>
+            <p className={styles.paragraph}>{ props.children }</p>
         </div>
     );
-};
 
 export default Loader;

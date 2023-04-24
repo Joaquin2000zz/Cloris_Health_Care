@@ -1,4 +1,4 @@
-.App {
+.Model {
     text-align: center;
     height: 100vh;
     padding: 0 10px;
@@ -8,18 +8,18 @@
     align-items: center;
   }
   
-  .App-logo {
+  .Model-logo {
     height: 40vmin;
     pointer-events: none;
   }
   
   @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
+    .Model-logo {
+      animation: Model-logo-spin infinite 20s linear;
     }
   }
   
-  .App-header {
+  .Model-header {
     background-color: #282c34;
     min-height: 100vh;
     display: flex;
@@ -30,11 +30,11 @@
     color: white;
   }
   
-  .App-link {
+  .Model-link {
     color: #61dafb;
   }
   
-  @keyframes App-logo-spin {
+  @keyframes Model-logo-spin {
     from {
       transform: rotate(0deg);
     }
@@ -43,7 +43,7 @@
     }
   }
   
-  .App > .content {
+  .Model > .content {
     margin-top: 5px;
     position: relative;
   }
