@@ -1,7 +1,8 @@
 import {
   people01, linkedin, classification,
   objectDetection, semanticSegmentation, instanceSegmentation,
-  performance, gridCellDivision, precisionRecallCurves, yolov8Segmentation, github
+  performance, gridCellDivision, precisionRecallCurves, yolov8Segmentation, github,
+  metrics, train, FPExample
 } from '../style/assets';
 
 
@@ -45,7 +46,7 @@ export const featuresDescription = [
     id: 'example-2',
     img: objectDetection,
     description: 'Object Detection Example',
-    source: "Extraction from the testing data set in which our model's performance was tested after becoming trained.",
+    source: "Extraction from the testing data set in which our model's performance was tested after becoming trained",
   },
   {
     id: 'example-3',
@@ -93,6 +94,28 @@ export const featuresYOLO = [
     link: 'https://learnopencv.com/ultralytics-yolov8/'
   }
 ];
+
+export const featuresTraining = [
+  {
+    id: 'example-1',
+    img: train,
+    description: "Train Loss curve across training",
+    source: 'Snapshots from training logs visualized in TensorBoard',
+  },
+  {
+    id: 'example-2',
+    img: metrics,
+    description: 'Mean Average Precision, Precision and Recall curves across training',
+    source: 'Snapshots from training logs visualized in TensorBoard',
+  },
+  {
+    id: 'example-3',
+    img: FPExample,
+    description: 'Prediction containing a false positive. The middle apple was classified incorrectly',
+    source: 'Another extraction from the testing data set',
+  }
+];
+
 
 export const pInfo = [
   {

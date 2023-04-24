@@ -15,9 +15,15 @@ import performance from './performance.png'
 import gridCellDivision from './gridCellDivision.png'
 import precisionRecallCurves from './precisionRecallCurves.png'
 import yolov8Segmentation from './yolov8Segmentation.gif'
+import train from './train.png'
+import metrics from './metrics.png'
+import FPExample from './FPExample.png'
 
 
 export {
+  FPExample,
+  metrics,
+  train,
   classification,
   objectDetection,
   semanticSegmentation,

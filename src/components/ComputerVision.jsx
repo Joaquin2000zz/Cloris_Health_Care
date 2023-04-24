@@ -9,7 +9,7 @@ const ComputerVision = ({ img, description, source, link, index, n }) => (
       <div className={`w-[100%] h-[500px] ${styles.flexCenter}
          flex flex-col space-y-7`}>
         <h3 className='font-poppins font-normal mt-1
-          text-dimWhite text-[16px] '>{description}:</h3>
+          text-dimWhite text-[16px] text-center'>{description}:</h3>
         <img src={img} alt="star" className='w-[80%] h-[50%] object-scale-down
         transition duration-100 ease-in-out hover:scale-150 onclick:scale-150 max-w-[670px]' />
         <p className='font-poppins font-normal

@@ -81,7 +81,7 @@ export const Model = () => {
     }, [isShown]);
 
     return (
-        <section className={`${styles.flexCenter} ${styles.marginY}
+        <section id='camera' className={`${styles.flexCenter} ${styles.marginY}
         ${styles.padding} flex-col bg-black-gradient-2
         rounded-[20px] box-shadow`}>
             <div className={`${styles.flexCenter} sm:ml-10 ml-0
