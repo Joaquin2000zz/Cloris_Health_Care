@@ -147,7 +147,7 @@
   }
   25%,
   55% {
-    transform: translateY(30px);
+    transform: translateY(10px);
     filter: drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.5)); /* Add shadow when element is below */
   }
 }

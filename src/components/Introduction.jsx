@@ -54,12 +54,15 @@ const Introduction = () =>
       </p>
     </div>
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-      <img src={roboHand} alt='roboHand'
-        className='absolute top-0 left-0 z-10' />
-      <img src={apple} alt='apple'
-        className='z-20 absolute animate-up-down -top-0' />
-      <img src={fingers} alt='fingers'
-        className='absolute top-0 left-0 z-20' />
+
+      <div className={`flex-1 md:my-0 my-10 relative ${styles.paddingY}`}>
+        <img src={roboHand} alt='roboHand'
+          className='absolute -top-60 left-0 z-10' />
+        <img src={apple} alt='apple'
+          className='z-20 absolute animate-up-down -top-60' />
+        <img src={fingers} alt='fingers'
+          className='absolute -top-60 left-0 z-20' />
+      </ div>
       <div className='absolute z-[0] w-[40%]
       h-[35%] top-0 pink__gradient'/>
       <div className='absolute z-[1] w-[80%]
