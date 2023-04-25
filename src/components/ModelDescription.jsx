@@ -12,8 +12,8 @@ const ModelDescription = () =>
 (
   <section id='model' className={`${layout.section} items-start`}>
     <div className={`${layout.sectionInfo} relative`}>
-      <div className='absolute z-[0] w-[60%] h-[60%]
-      -right-[50%] rounded-full blue__gradient'/>
+      <div className='absolute w-[100%] h-[100%]
+      left-[80%] rounded-full blue__gradient'/>
       <h2 className={`${styles.heading2} cursor-pointer`} onClick={() => { window.location.href = '#camera' }} >
         <span className='text-secondary cursor-pointer'>Give it a try!</span></h2>
       <h3 className='font-poppins text-white text-[30px] mt-5'>Training:</h3>
