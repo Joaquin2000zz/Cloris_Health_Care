@@ -18,9 +18,15 @@ import yolov8Segmentation from './yolov8Segmentation.gif'
 import train from './train.png'
 import metrics from './metrics.png'
 import FPExample from './FPExample.png'
+import roboHand from './roboHand.png'
+import fingers from './fingers.png'
+import apple from './apple.png'
 
 
 export {
+  roboHand,
+  fingers,
+  apple,
   FPExample,
   metrics,
   train,

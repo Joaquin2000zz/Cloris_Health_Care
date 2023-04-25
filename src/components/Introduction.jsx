@@ -1,7 +1,7 @@
 import styles from '../style';
 import { holbertonLogo } from '../style/assets';
 import GetStarted from './GetStarted';
-import Robot from './Robot';
+import { roboHand, fingers, apple } from '../style/assets';
 
 
 const Introduction = () =>
@@ -54,7 +54,12 @@ const Introduction = () =>
       </p>
     </div>
     <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-      <Robot/>
+      <img src={roboHand} alt='roboHand'
+        className='absolute top-0 left-0 z-10' />
+      <img src={apple} alt='apple'
+        className='z-20 absolute animate-up-down -top-0' />
+      <img src={fingers} alt='fingers'
+        className='absolute top-0 left-0 z-20' />
       <div className='absolute z-[0] w-[40%]
       h-[35%] top-0 pink__gradient'/>
       <div className='absolute z-[1] w-[80%]
@@ -64,7 +69,7 @@ const Introduction = () =>
       h-[50%] right-20 bottom-20 blue__gradient'/>
     </div>
     <div className={`ss:hidden ${styles.flexCenter}`}>
-      <GetStarted></GetStarted>
+      <GetStarted />
     </div>
   </section>
 );

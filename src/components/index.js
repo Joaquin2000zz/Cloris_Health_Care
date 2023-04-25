@@ -11,7 +11,7 @@ import Model from './Model'
 import NavBar from './NavBar';
 import Team from './Team';
 import ComputerVision from './ComputerVision';
-import Robot from './Robot';
+
 
 export {
     ComputerVision,
