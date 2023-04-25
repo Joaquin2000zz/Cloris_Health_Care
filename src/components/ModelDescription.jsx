@@ -5,7 +5,7 @@ import { featuresTraining } from '../constants';
 const FancyALink = ({ text, link }) => (
   <span onClick={() => window.open(
     link)}
-    className='text-gradient cursor-pointer'>{text}</span>
+    className='text-secondary cursor-pointer'>{text}</span>
 )
 
 const ModelDescription = () =>
@@ -15,7 +15,7 @@ const ModelDescription = () =>
       <div className='absolute z-[0] w-[60%] h-[60%]
       -right-[50%] rounded-full blue__gradient'/>
       <h2 className={`${styles.heading2} cursor-pointer`} onClick={() => { window.location.href = '#camera' }} >
-        <span className='text-gradient cursor-pointer'>Give it a try!</span></h2>
+        <span className='text-secondary cursor-pointer'>Give it a try!</span></h2>
       <h3 className='font-poppins text-white text-[30px] mt-5'>Training:</h3>
       <p className={`${styles.paragraph} mt-5`}>
         Our model was obtained by performing{' '}
