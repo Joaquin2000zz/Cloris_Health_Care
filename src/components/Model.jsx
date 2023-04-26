@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-backend-webgl'; // set backend to webgl
 import { Button, Loader } from './index';
-import { non_max_suppression, renderBoxes, shortenedCol, Webcam } from './model_functions'
+import { renderBoxes, Webcam } from './model_functions'
 import styles from '../style';
 
 
@@ -36,11 +36,32 @@ export const Model = () => {
         });
 
         await model.executeAsync(input).then((res) => {
+            /**
+             * res consist in a bach of detections.
+             * each detection consinsts of:
+             * (0, 4) = x, y, w, h
+             * (4) = score
+             * (5, -1) = classes
+             */
             res = res.arraySync()[0];
-            var detections = non_max_suppression(res);
-            const boxes = shortenedCol(detections, [0, 1, 2, 3]);
-            const scores = shortenedCol(detections, [4]);
-            const classes = shortenedCol(detections, [5]);
+            console.log(res[0])
+            const detections = tf.image.nonMaxSuppression(res.map((x) => x.slice(0, 4)), res.map((x) => x[4]),
+                                                          100, .020, .5);
+            let boxes = [];
+            let scores = [];
+            let classes = [];
+            for (const x of detections.arraySync()) {
+                boxes.push(res[x].slice(0, 4))
+                scores.push(res[x][4])
+                /**
+                 * reduce:
+                 * 1 = accumulator
+                 * 2 = current value
+                 * 3 = current index
+                 * 4 = array itself
+                 */
+                classes.push(res[x].slice(5).reduce((imax, x, i, arr) => x > arr[imax] ? i : imax, 0));
+            }
 
             renderBoxes(canvasRef, threshold, boxes, scores, classes);
             tf.dispose(res)

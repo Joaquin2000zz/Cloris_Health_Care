@@ -20,6 +20,7 @@ export const renderBoxes = (canvasRef, threshold, boxes_data,
 
     for (let i = 0; i < scores_data.length; i++) {
         if (scores_data[i] <= threshold) continue;
+        console.log('classes_data[i]', classes_data[i])
         const cls = labelMap[classes_data[i]]['name'];
         let [x1, y1, x2, y2] = xywh2xyxy(boxes_data[i])
 
