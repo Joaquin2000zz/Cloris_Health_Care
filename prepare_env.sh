@@ -5,7 +5,6 @@ conda create --name py35 python=3.5
 source activate py35
 mkdir labelimg
 mkdir images
-mkdir labels
 mkdir healthy_apple
 mkdir rotten_apple
 git clone https://github.com/tzutalin/labelImg labelimg
@@ -24,4 +23,7 @@ pip3 install -U pyarrow
 pip3 uninstall keras
 pip3 install -U tensorflow keras
 sudo apt-get install -y nodejs
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
 npm install
