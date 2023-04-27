@@ -44,7 +44,6 @@ export const Model = () => {
              * (5, -1) = classes
              */
             res = res.arraySync()[0];
-            console.log(res[0])
             const detections = tf.image.nonMaxSuppression(res.map((x) => x.slice(0, 4)), res.map((x) => x[4]),
                                                           100, .020, .5);
             let boxes = [];
