@@ -42,16 +42,29 @@ export const Model = () => {
              * (0, 4) = x, y, w, h
              * (4) = score
              * (5, -1) = classes
+             *
+             * reduce:
+             * 1 = accumulator
+             * 2 = current value
              */
             res = res.arraySync()[0];
-            const detections = tf.image.nonMaxSuppression(res.map((x) => x.slice(0, 4)), res.map((x) => x[4]),
+            const [coordinates, probabilities] = res.reduce(
+                (acc, x) => {
+                    acc[0].push(x.slice(0, 4));
+                    acc[1].push(x[4]);
+                    return (acc);
+                }, [[], []]
+            );
+            const detections = tf.image.nonMaxSuppression(coordinates, probabilities,
                                                           100, .020, .5);
             let boxes = [];
             let scores = [];
             let classes = [];
-            for (const x of detections.arraySync()) {
-                boxes.push(res[x].slice(0, 4))
-                scores.push(res[x][4])
+            const detArr = detections.arraySync()
+            for (let i = 0, n = detArr.length; i < n; ++i) {
+                const x = res[detArr[i]]
+                boxes.push(x.slice(0, 4))
+                scores.push(x[4])
                 /**
                  * reduce:
                  * 1 = accumulator
@@ -59,7 +72,9 @@ export const Model = () => {
                  * 3 = current index
                  * 4 = array itself
                  */
-                classes.push(res[x].slice(5).reduce((imax, x, i, arr) => x > arr[imax] ? i : imax, 0));
+                classes.push(x.slice(5).reduce(
+                    (imax, x, i, arr) => x > arr[imax] ? i : imax, 0)
+                    );
             }
 
             renderBoxes(canvasRef, threshold, boxes, scores, classes);

@@ -18,7 +18,7 @@ export const renderBoxes = (canvasRef, threshold, boxes_data,
     ctx.font = font;
     ctx.textBaseline = 'top';
 
-    for (let i = 0; i < scores_data.length; i++) {
+    for (let i = 0, n = scores_data.length; i < n; ++i) {
         if (scores_data[i] <= threshold) continue;
         const cls = labelMap[classes_data[i]]['name'];
         let [x1, y1, x2, y2] = xywh2xyxy(boxes_data[i])
