@@ -34,8 +34,10 @@ const YOLO = () =>
       </p>
       <h3 className='font-poppins text-white text-[30px]'>Bounding Box Prediction:</h3>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-      The input image is divided into a grid of cells, typically with a fixed size of 7x7 or 13x13.{' '}
-      Each cell is responsible for detecting objects that fall within its boundaries.
+      For each cell, YOLO predicts bounding boxes for objects. Each bounding box is represented by five values:{' '}
+      {`(`}x, y, width, height, and confidence{`)`}. The {`(`}x, y{`)`} coordinates represent the center of the bounding{' '}
+      box relative to the cell, and the width and height are normalized relative to the image size. The confidence score measures{' '}
+      how much the model believes that is in the presence of an object within the bounding box.
       </p>
       <h3 className='font-poppins text-white text-[30px]'>Class Prediction:</h3>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
