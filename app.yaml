@@ -12,3 +12,6 @@ handlers:
   - url: /.*
     static_files: build/index.html
     upload: build/index.html
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 30
