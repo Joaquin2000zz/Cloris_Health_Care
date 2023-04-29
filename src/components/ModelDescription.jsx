@@ -41,7 +41,7 @@ const ModelDescription = () =>
       </p>
       <h3 className='font-poppins text-white text-[30px] mt-5'>Conclusion:</h3>
       <p className={`${styles.paragraph} mt-5`}>
-      Although it was trained with images extracted from Google Images and sometimes predicts false positives, the model performs well. This means that if trained with labeled images with the supervision of experts, it will improve the performance tremendously.{' '}
+      Although it was trained with images extracted from Google Images and sometimes predicts false positives, the model performs well. This means that if trained with labeled images under the supervision of agriculture experts, it will improve the performance tremendously.{' '}
       This opens the possibility of discriminating between several diseases without problems with several Fruits/Vegetables.
       </p>
     </div>
