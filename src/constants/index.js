@@ -76,14 +76,14 @@ export const featuresYOLO = [
     id: 'example-2',
     img: gridCellDivision,
     description: 'Grid Cell Division, BBoxes Predictions, and NMS Intuitions',
-    source: 'YOLO article from the arXiv official website',
+    source: 'YOLO paper from the arXiv official website',
     link: 'https://arxiv.org/abs/1506.02640'
   },
   {
     id: 'example-3',
     img: precisionRecallCurves,
     description: 'Picasso Dataset precision-recall curves',
-    source: 'Semantic Segmentation in the era of Neural Networks | AI Summer',
+    source: 'YOLO paper from the arXiv official website',
     link: 'https://arxiv.org/abs/1506.02640'
   },
   {
