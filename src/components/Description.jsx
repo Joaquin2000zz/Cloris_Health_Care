@@ -19,7 +19,7 @@ const Description = () =>
         that is the task of marking with a bounding box {'('}marked with its score{')'} where an instance of the class in the image appears.
         Also, we have the semantic segmentation. Defined as the task of segmenting the pixels belonging to each class. And last but not least, the instance segmentation, {' '}
         arrived as the task of segmenting as semantic segmentation does, but with the addition of discriminating between objects. Making for each instance a segmentation referring to its class.
-        <br /><br />There are many more applications e.g. pose estimation, depth estimation, etc. Summarized were named and described the most known. However, I let it as an exercise for curious lectors to search for which are.
+        <br /><br />There are many more applications e.g. pose estimation, depth estimation, etc. Summarized were named and described the most known. However, I let it as an exercise for curious lectors to search for which are the rest of the applications.
       </p>
       <Button onClick={() => window.location.href = '#model'} styles='mt-10' text='Get Started' />
     </div>
