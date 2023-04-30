@@ -22,7 +22,7 @@ const YOLO = () =>
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
         YOLO is popular known as You Only Live Once. But in the context of machine learning, refers to You Only Look Once,{' '}
-        a machine learning model that revolutionized the computer field. This algorithm can detect multiple objects in images in real-time. It was introduced by Joseph Redmon et al.{' '}
+        a machine learning model that revolutionized the computer vision field. This algorithm can detect multiple objects in images in real-time. It was introduced by Joseph Redmon et al.{' '}
         in 2015 and has since become the state-of-art widely used object detection algorithm due to its speed and accuracy.
         YOLO divides an input image into a grid of cells and predicts bounding boxes and class probabilities for objects within each grid cell.{' '}
         YOLO's workflow is detailed as follows:
