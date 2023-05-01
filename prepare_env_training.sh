@@ -4,6 +4,9 @@
 sudo apt-get update
 sudo apt-get install build-essential checkinstall
 sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+git clone https://github.com/tzutalin/labelImg labelimg
+cd labelimg
+pyrcc5 -o libs/resources.py resources.qrc
 cd /usr/src
 wget https://www.python.org/ftp/python/3.5.9/Python-3.5.9.tgz
 sudo tar xzf Python-3.5.9.tgz
@@ -15,9 +18,6 @@ mkdir labelimg
 mkdir images
 mkdir healthy_apple
 mkdir rotten_apple
-git clone https://github.com/tzutalin/labelImg labelimg
-cd labelimg
-pyrcc5 -o libs/resources.py resources.qrc
 pip3 install -U onnx
 pip3 install -U onnxruntime
 pip3 install -U onnx-tf
