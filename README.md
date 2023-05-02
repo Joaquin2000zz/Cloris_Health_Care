@@ -50,5 +50,7 @@ sh prepare_env_training.sh
 ```
 
 ## App screenshots:
-![alt text](https://github.com/Joaquin2000zz/Cloris_Health_Care/blob/main/src/style/assets/appSS.png?raw=true)
-# TODO add a gif using the model
+<div style="display: flex; align-items: column;">
+<img src="https://github.com/Joaquin2000zz/Cloris_Health_Care/blob/main/src/style/assets/appSS.png?raw=true"/>
+<img src="https://github.com/Joaquin2000zz/Cloris_Health_Care/blob/main/src/style/assets/appSS2.jpeg?raw=true" style="height: 400px;"/>
+</div>
