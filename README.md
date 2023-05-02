@@ -14,7 +14,7 @@ Cloris Health Care is a web app containing a deep convolutional neural network t
 ![image](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 
 ## Try it out!
-The model is available in our website <a style="background-color: #149ddd; color: #fff; border: .4px; solid #173b6c; padding: 5px 10px; border-radius: 5px;font-size: small;cursor: pointer;" href="https://cloris-health-care.rj.r.appspot.com/"> Go to the Website</a>
+The model is available in our website <a href="https://cloris-health-care.rj.r.appspot.com/"> <b>Go to the Website</b></a>
 
 ## Installation:
 
