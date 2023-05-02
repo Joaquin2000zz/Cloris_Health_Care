@@ -20,8 +20,7 @@ The model is available in our website <a style="background-color: #149ddd;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: small;
-  cursor: pointer;
-  transition: .6s; " > <b>Go to the Website<b></a>
+  cursor: pointer;" > <b>Go to the Website<b></a>
 
 ## Installation:
 
