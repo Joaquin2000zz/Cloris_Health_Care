@@ -1,4 +1,4 @@
-# Cloris Health Care <img style="position:absolute;left:36%" src="https://github.com/Joaquin2000zz/Cloris_Health_Care/blob/main/src/style/assets/logo.png?raw=true" height="40px">
+# Cloris Health Care <img style="transform: translateY(10px);" src="https://github.com/Joaquin2000zz/Cloris_Health_Care/blob/main/src/style/assets/logo.png?raw=true" height="40px">
 ## About the Project:
 Cloris Health Care is a software developed to classify whether an apple is healthy or unhealthy using object detection. However, the content of this repository is portable and applicable to whichever object detection task you want because it contains an end-to-end pipeline you can customize in your dataset. If you're interested, the last part of the readme will detail how to do it.
 ### Technologies used:
