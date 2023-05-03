@@ -10,7 +10,7 @@ const Team = () =>
       <div className='w-full flex justify-between
       items-center flex-col
       sm:mb-16 mb-6 relative z-[1]'>
-        <h1 className={styles.heading2}>Our Team:</h1>
+        <h1 className={styles.heading2}>Developed by:</h1>
       </div>
       <div className='flex flex-col
       sm:justify-start justify-center w-full
