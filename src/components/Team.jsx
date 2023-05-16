@@ -4,7 +4,7 @@ import PersonalInfo from './PersonalInfo';
 
 const Team = () =>
   (
-    <section id='team' className={`${styles.paddingY}
+    <section id='developed_by' className={`${styles.paddingY}
     ${styles.flexCenter} flex-col
     relative`}>
       <div className='w-full flex justify-between
